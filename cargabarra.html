@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Animación mi love</title>
+    <link rel="icon" type="image/png" href="meloicon.png"> <!-- Cambia la ruta a tu imagen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&family=Satisfy&family=Great+Vibes&display=swap" rel="stylesheet"> <!-- Importar fuentes -->
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff; /* Color de fondo suave */
+            overflow: hidden;
+            position: relative;
+            font-family: 'Arial', sans-serif; /* Fuente por defecto */
+        }
+
+        .corazon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(226, 74, 201);
+            clip-path: path('M 10 0 A 10 10 0 1 1 0 10 A 10 10 0 1 1 10 0 Z'); /* Forma de corazón */
+            animation: caer 3s linear forwards;
+        }
+
+        @keyframes caer {
+            0% { top: -20px; opacity: 1; transform: translateX(0); }
+            50% { transform: translateX(-10px); } /* Movimiento lateral */
+            100% { top: 100vh; opacity: 0; }
+        }
+
+        .melody {
+            position: absolute;
+            bottom: 51px; /* 1 px encima de la línea */
+            width: 250px; /* Ajusta el tamaño según sea necesario */
+            transform: scaleX(-1); /* Reflejar el GIF */
+            background: none; /* Sin fondo */
+        }
+
+        .cuadro {
+            display: none;
+            width: 350px; /* Aumentar el tamaño del cuadro */
+            height: 250px; /* Aumentar el tamaño del cuadro */
+            background-color: #ffcc00;
+            border-radius: 10px;
+            position: absolute;
+            top: -150px;
+            animation: empujar 2s forwards;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @keyframes empujar {
+            to { top: 50px; }
+        }
+
+        .imagen {
+            display: none; /* Ocultar la imagen inicialmente */
+            width: 220px; /* Aumentar el tamaño de la imagen */
+            margin: 20px auto 0; /* Centrar horizontalmente y agregar margen superior */
+            border-radius: 15px; /* Borde curvo */
+            border: 2px solid #007BFF; /* Borde azul */
+        }
+
+        .texto-escribiendo {
+            font-family: 'Pacifico', cursive; /* Fuente tipo script */
+            font-size: 23px;
+            margin-top: 10px;
+            animation: escribir 4s forwards;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            display: none; /* Ocultar el texto inicialmente */
+        }
+
+        @keyframes escribir {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        .boton-sobre {
+            margin: 20px auto 0;
+            display: none; /* Ocultar el botón inicialmente */
+            width: 55px; /* Ancho del sobre */
+            height: 30px; /* Alto del sobre */
+            background-image: url('sobre.png'); /* Reemplaza con la URL de tu imagen */
+            background-size: cover; /* Ajustar la imagen para que cubra todo el fondo */
+            border: 1px solid #7d5b3a; /* Borde del sobre */
+            border-radius: 5px; /* Bordes redondeados */
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            color: #ffffff; /* Color del texto */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+            transition: transform 0.3s;
+            display: flex; /* Usar flex para centrar el texto */
+            align-items: center; /* Centrar verticalmente */
+            justify-content: center; /* Centrar horizontalmente */
+            opacity: 0; /* Comienza oculto para la animación */
+        }
+
+        .boton-sobre.show {
+            display: flex; /* Mostrar el botón */
+            opacity: 1; /* Hacerlo visible */
+            animation: aparecer 1.5s forwards; /* Animación de aparición */
+        }
+
+        @keyframes aparecer {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .lineas {
+            position: absolute;
+            width: 70%; /* Ancho del 70% */
+            height: 10px; /* Aumentar el grosor de la línea */
+            background-color: #ffffff; /* Color del fondo */
+            overflow: hidden;
+            bottom: 50px;
+            display: flex;
+            justify-content: center; /* Centrar las líneas */
+        }
+
+        .linea {
+            width: 250px; /* Ancho de la línea */
+            height: 10px; /* Aumentar el grosor de la línea */
+            background-color: #302f2f; /* Color plomo */
+            margin: 0 20px; /* Espaciado entre líneas */
+            animation: mover 2.5s linear infinite;
+        }
+
+        @keyframes mover {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .cuadro-contenido {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 400px;
+            background-image: url('hojacora.jpg'); /* Reemplaza con la URL de tu imagen */
+            background-size: cover; /* Ajusta la imagen para que cubra todo el fondo */
+            border: 2px solid #22a3b9;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            padding: 27px;
+            text-align: center; /* Centrar el texto */
+            overflow: visible;
+        }
+
+        #tex-carta {
+            font-family: 'Dancing Script', cursive; /* Fuente Dancing Script */
+            font-size: 31px; /* Ajusta el tamaño de la fuente */
+            margin: 50px 15px;
+            white-space: normal; /* Permitir que el texto se divida en varias líneas */
+            overflow: hidden; /* Ocultar el desbordamiento */
+            width: 85%; /* Cambiar a 100% para ocupar todo el ancho disponible */
+            text-align: center; /* Centrar el texto */
+            color: red;
+        }
+
+        #gif {
+            position: absolute; /* Posición absoluta para el GIF */
+            top: 65%; /* Ajustar según sea necesario */
+            left: 50%; /* Centrar horizontalmente */
+            transform: translate(-50%, -50%); /* Ajustar para centrar */
+            display: none; /* Ocultar inicialmente */
+            width: 210px; /* Ajusta el tamaño del GIF */
+            z-index: 10; /* Asegúrate de que esté por encima del texto */
+        }
+
+        .Atsushi-enlace {
+            position: relative; /* Necesario para el posicionamiento absoluto */
+            display: inline-block; /* Asegura que el enlace se comporte como bloque */
+            
+        }
+
+        .Atsushi {
+            width: 100px; /* Ajusta el tamaño según sea necesario */
+            height: auto; /* Mantiene la proporción de la imagen */
+            position: absolute; /* Posiciona las imágenes una sobre otra */
+            top: 0;
+            left: 0;
+            opacity: 0; /* Oculta ambas imágenes por defecto */
+            transition: opacity 0.3s; /* Transición suave */
+        }
+
+        .normal {
+            opacity: 1; /* Muestra la imagen normal */
+        }
+
+        .Atsushi-enlace:hover .normal {
+            opacity: 0; /* Oculta la imagen normal al pasar el cursor */
+        }
+
+        .Atsushi-enlace:hover .hover {
+            opacity: 1; /* Muestra la imagen hover al pasar el cursor */
+        }
+        
+/* aqui el de akutagawa */
+        .Akutagawa-enlace {
+            position: relative; /* Necesario para el posicionamiento absoluto */
+            display: inline-block; /* Asegura que el enlace se comporte como bloque */
+            margin-left: 200px; /* Ajusta el margen izquierdo para mover a la derecha */
+            
+        }
+
+        .Akutagawa {
+            width: 100px; /* Ajusta el tamaño según sea necesario */
+            height: auto; /* Mantiene la proporción de la imagen */
+            position: absolute; /* Posiciona las imágenes una sobre otra */
+            top: 0;
+            left: 0;
+            opacity: 0; /* Oculta ambas imágenes por defecto */
+            transition: opacity 0.3s; /* Transición suave */
+        }
+
+        .normal {
+            opacity: 1; /* Muestra la imagen normal */
+        }
+
+        .Akutagawa-enlace:hover .normal {
+            opacity: 0; /* Oculta la imagen normal al pasar el cursor */
+        }
+
+        .Akutagawa-enlace:hover .hover {
+            opacity: 1; /* Muestra la imagen hover al pasar el cursor */
+        }
+
+        #gifAtsushi, #gifAkutagawa {
+              width: 100%; /* Cambiar el tamaño de la imagen */
+              height: auto; /* Mantener la proporción */
+              position: fixed; /* Cambiar a posición fija */
+              top: 0; /* Alinear al borde superior */
+              left: 0; /* Alinear al borde izquierdo */
+              display: none; /* Ocultar inicialmente */
+    
+              z-index: 10; /* Asegúrate de que esté por encima del texto */
+              object-fit: cover; /* Ajustar la imagen para cubrir el contenedor */
+              top: 50%; /* Centrar verticalmente */
+              left: 50%; /* Centrar horizontalmente */
+              transform: translate(-50%, -50%); /* Ajustar para centrar */
+        }
+        #gifAkutagawa img {
+            width: auto; /* Aumenta el tamaño del GIF al 150% */
+            height: 100vh; /* Mantiene la proporción del GIF */
+            position: absolute; /* Posiciona la imagen de forma absoluta */
+            top: 50%; /* Centra verticalmente */
+            left: 50%; /* Centra horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta la imagen al centro */
+        }
+        #gifAtsushi img {
+            width: auto; /* Aumenta el tamaño del GIF al 150% */
+            height: 100vh; /* Mantiene la proporción del GIF */
+            position: absolute; /* Posiciona la imagen de forma absoluta */
+            top: 50%; /* Centra verticalmente */
+            left: 50%; /* Centra horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta la imagen al centro */
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <img src="melody.gif" alt="Melody" class="melody" />
+
+    <div class="cuadro" id="cuadro">
+        <img src="love.jpg" alt="Imagen" class="imagen" id="imagen" />
+        <div class="texto-escribiendo" id="textoEscribiendo">Eres la melodía que alegra mi vida.</div>
+        <div class="boton-sobre" id="boton"><span>♥</span></div>
+    </div>
+
+    <div class="lineas">
+        <div class="linea">1</div>
+        <div class="linea">2</div>
+        <div class="linea">3</div>
+        <div class="linea">4</div>
+        <div class="linea">5</div>
+        
+    </div>
+
+    <div class="cuadro-contenido" id="carta"> 
+        <p id="tex-carta"></p>
+        <img id="gif" src="besomelo.gif" alt="Descripción del GIF">
+
+        <div id="gifAtsushi">
+            <img src="Byakko.gif" alt="GIF de Atsushi"> <!-- Reemplaza con la ruta de tu GIF -->
+        </div>
+        
+        <div id="gifAkutagawa">
+            <img src="Rashomon.gif" alt="GIF de Akutagawa"> <!-- Reemplaza con la ruta de tu GIF -->
+        </div>
+
+        <a class="Atsushi-enlace" style="display: none;">
+            <img src="ATSU.png" alt="Atsushi Normal" class="Atsushi normal">
+            <img src="ATSU2.png" alt="Atsushi Hover" class="Atsushi hover">
+        </a>
+        <a class="Akutagawa-enlace" style="display: none;">
+            <img src="AKUT.png" alt="Akutagawa Normal" class="Akutagawa normal">
+            <img src="AKUT2.png" alt="Akutagawa Hover" class="Akutagawa hover">
+            
+        </a>
+        
+        
+    </div>
+
+    <script>
+        // Función para crear corazones al mover el mouse
+        document.addEventListener('mousemove', function(e) {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon';
+            corazon.style.left = `${e.pageX - 10}px`; // Centrar el corazón
+            corazon.style.top = `${e.pageY - 10}px`; // Centrar el corazón
+
+            // Agregar un retraso aleatorio antes de mostrar el corazón
+            const delay = Math.random() * 500; // Retraso entre 0 y 500 ms
+            setTimeout(() => {
+                document.body.appendChild(corazon);
+
+                // Eliminar el corazón después de que termine la animación
+                setTimeout(() => {
+                    corazon.remove();
+                }, 3000);
+            }, delay);
+        });
+
+        // Función para mostrar el cuadro y la imagen
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('cuadro').style.display = 'block';
+            }, 1000);
+
+            // Mostrar la imagen después de que termina de caer el cuadro
+            setTimeout(() => {
+                document.getElementById('imagen').style.display = 'block'; // Mostrar la imagen
+            }, 2500); // 2500 ms para que coincida con la duración del cuadro
+
+            // Mostrar el texto después de que aparece la imagen
+            setTimeout(() => {
+                const texto = document.getElementById('textoEscribiendo');
+                texto.style.display = 'block';
+            }, 3000); // 3000 ms para que aparezca después de la imagen
+
+            // Mostrar el botón después de que termine de escribir el texto
+            setTimeout(() => {
+                const boton = document.getElementById('boton');
+                boton.classList.add('show'); // Cambiar a flex para mostrar
+            }, 6900); // 7000 ms para que aparezca después de que termine de escribir el texto
+
+            // Hacer que la línea desaparezca después de que se escriba el texto
+            setTimeout(() => {
+                const texto = document.getElementById('textoEscribiendo');
+                texto.style.borderRight = 'none'; // Eliminar la línea al final
+            }, 4300); // 4300 ms para que coincida con el tiempo total
+        };
+
+        // Mostrar carta al hacer clic
+        document.getElementById('boton').onclick = function() {
+            const boton = document.getElementById('boton');
+            boton.style.backgroundImage = "url('aa.png')"; // Cambia a la nueva imagen
+            setTimeout(() => {
+                document.getElementById('carta').style.display = 'block';
+                const gif = document.getElementById('gif');
+                gif.style.display = 'none'; // Ocultar el GIF al inicio
+                escribirTexto(); // Llamar a la función para escribir el texto
+            }, 750); // Esperar 500 ms antes de mostrar la carta
+        };
+        function escribirTexto() {
+    const texto = "Te merecías el universo entero... y te conformas conmigo, una estrella a punto de apagarse."; 
+    const textoElemento = document.getElementById('tex-carta');
+    let index = 0;
+
+    function escribir() {
+        if (index < texto.length) {
+            textoElemento.innerHTML += `<strong>${texto.charAt(index++)}</strong>`; // Envolver en <strong>
+                    setTimeout(escribir, 100); // Cambia el tiempo según sea necesario (en milisegundos)
+                } else {
+                    setTimeout(() => {
+                        document.getElementById('gif').style.display = 'block'; // Mostrar el GIF después de que se complete el texto
+                        // Mostrar Atsushi 2 segundos después del GIF
+                        setTimeout(() => {
+                            document.querySelector('.Atsushi-enlace').style.display = 'block'; // Mostrar Atsushi
+                        }, 2000); // 2000 ms para mostrar Atsushi
+                    
+                        setTimeout(() => {
+                            document.querySelector('.Akutagawa-enlace').style.display = 'block'; // Mostrar Atsushi
+                        }, 2000); // 2000 ms para mostrar Atsushi
+                    }, 550); // Tiempo de espera antes de mostrar el GIF
+                }
+            }
+
+            escribir(); // Iniciar la escritura
+        }
+        
+        // Mostrar GIF de Atsushi al hacer clic
+document.querySelector('.Atsushi-enlace').onclick = function(event) {
+    event.preventDefault(); // Evitar el enlace
+    document.getElementById('gifAtsushi').style.display = 'block'; // Mostrar el GIF de Atsushi
+
+    setTimeout(() => {
+        window.location.href = 'carta.html'; // Redirigir a la página deseada
+    }, 3000); // Cambia el tiempo aquí si deseas que el GIF se muestre por más o menos tiempo
+};
+
+// Mostrar GIF de Akutagawa al hacer clic
+document.querySelector('.Akutagawa-enlace').onclick = function(event) {
+    event.preventDefault(); // Evitar el enlace
+    document.getElementById('gifAkutagawa').style.display = 'block'; // Mostrar el GIF de Akutagawa
+    
+    // Redirigir a la página deseada después de 5 segundos (5000 ms)
+    setTimeout(() => {
+        window.location.href = 'corazon.html'; // Redirigir a la página deseada
+    }, 5800); // Cambia el tiempo si es necesario
+};
+
+
+    </script>
+</body>
+</html>

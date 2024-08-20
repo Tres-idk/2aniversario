@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&family=Satisfy&family=Great+Vibes&display=swap" rel="stylesheet"> <!-- Importar fuentes -->
+   <title>Corazón de palabras</title>
+   <link rel="icon" type="png,jpg" href="coraicon.png">
+ 
+
+   <style>
+      /* Color de fondo */
+      body {
+         background-color: #0b1522;
+         display: flex;
+         justify-content: center; /* Centra horizontalmente */
+         align-items: center; /* Centra verticalmente */
+         height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+         width: auto;
+         margin: 0; /* Elimina el margen por defecto */
+      }
+
+      /* Contenedor principal */
+      .container {
+         width: 700px;
+         height: 700px;
+         position: relative; /* Posicionamiento relativo para los elementos hijos */
+         opacity: 0; /* Comienza invisible */
+         transform: translateY(-20px); /* Comienza un poco más arriba */
+         animation: latiendo 0.6s linear infinite, drop 0.5s forwards; /* Añadido efecto de latido */ /* Aplica la animación de caída */
+         bottom: 0%;
+         justify-content: center; /* Centra horizontalmente */
+         align-items: center; 
+         
+         
+      
+      }
+
+      .amor {
+         position: absolute;
+         right: 200px;
+         bottom: 130px;
+         color: red;
+         font-size: 30px;
+         font-family: 'Dancing Script', cursive; /* Fuente Dancing Script */
+      }
+      .primera{
+         /*posicionaremos absolute para que tome como referencia el contenedor principal y ajustemos el right y bottom segun queramos*/
+         position: absolute;
+         right: 250px;
+         bottom: 0;    
+      }
+      .segunda{
+            position: absolute;
+            right: 200px;
+            bottom: 20px;
+         }
+         .tercera{
+            position: absolute;
+            right: 150px;
+            bottom: 40px;
+         }.cuarta{
+            position: absolute;
+            right: 130px;
+            bottom: 65px;
+         }.quinta{
+            position: absolute;
+            right: 100px;
+            bottom: 90px;
+         }.sexta{
+            position: absolute;
+            right: 90px;
+            bottom: 110px;
+         }.septima{
+            position: absolute;
+            right: 75px;
+            bottom: 135px;
+         }.octava{
+            position: absolute;
+            right: 50px;
+            bottom: 155px;
+         }.novena{
+            position: absolute;
+            right: 25px;
+            bottom: 175px;
+         }.decima{
+            position: absolute;
+            right:25px;
+            bottom: 195px;
+         }.decima1{
+            position: absolute;
+            right: 15px;
+            bottom: 220px;
+         }.decima2{
+            position: absolute;
+            right: 12px;
+            bottom: 240px;
+         }.decima3{
+            position: absolute;
+            right: 10px;
+            bottom: 260px;
+         }.decima4{
+            position: absolute;
+            right: 40px;
+            bottom: 260px;
+         }.decima5{
+            position: absolute;
+            right: 5px;
+            bottom: 280px;
+         }.decima6{
+            position: absolute;
+            right: 10px;
+            bottom: 300px;
+         }.decima7{
+            position: absolute;
+            right: 15px;
+            bottom: 320px;
+         }.decima8{
+            position: absolute;
+            right: 35px;
+            bottom: 340px;
+         }.decima9{
+            position: absolute;
+            right: 80px;
+            bottom: 360px;
+         }.vigesima{
+            position: absolute;
+            right: 110px;
+            bottom: 340px;
+         }.vigesima1{
+            position: absolute;
+            right: 110px;
+            bottom: 320px;
+         }.vigesima2{
+            position: absolute;
+            right: 145px;
+            bottom: 300px;
+         }.vigesima3{
+            position: absolute;
+            right: 130px;
+            bottom: 280px;
+         }.vigesima4{
+            position: absolute;
+            right: 180px;
+            bottom: 260px;
+         }.vigesima5{
+            position: absolute;
+            right: 180px;
+            bottom: 240px;
+         }.vigesima6{
+            position: absolute;
+            right: 200px;
+            bottom: 220px;
+
+          /*hasta aqui tendriamos el medio corazon , tenes que seguir posicinando las palabras*/
+         }
+
+
+         
+         .primera-{
+            position: absolute;
+            right: 270px;
+            bottom: 20px;
+         }
+         .segunda-{
+            position: absolute;
+            right: 305px;
+            bottom: 40px;
+         }
+         .tercera-{
+            position: absolute;
+            right: 305px;
+            bottom: 60px;
+         }
+         .cuarta-{
+            position: absolute;
+            right: 355px;
+            bottom: 77px;
+         }
+         .quinta-{
+            position: absolute;
+            right: 355px;
+            bottom: 95px;
+         }
+         .sexta-{
+            position: absolute;
+            right: 355px;
+            bottom: 112px;
+         }
+         .septima-{
+            position: absolute;
+            right: 360px;
+            bottom: 130px;
+         }
+         .octava-{
+            position: absolute;
+            right: 430px;
+            bottom: 155px;
+         }
+         .novena-{
+            position: absolute;
+            right: 388px;
+            bottom: 172px;
+         }
+         .decima-{
+            position: absolute;
+            right: 445px;
+             bottom: 193px;
+         }
+         .decima-1{
+            position: absolute;
+            right: 455px;
+            bottom: 215px;
+         }
+         .decima-2{
+            position: absolute;
+            right:425px ;
+            bottom: 240px;
+         }
+         .decima-4{
+            position: absolute;
+            right: 415px;
+            bottom: 233px;
+         }
+         .decima-5{
+            position: absolute;
+            right: 455px;
+            bottom: 265px;
+         }.decima-6{
+            position: absolute;
+            right: 465px;
+            bottom: 285px;
+         }
+         .decima-7{
+            position: absolute;
+            right: 470px;
+            bottom: 305px;
+         }
+         .decima-8{
+            position: absolute;
+            right: 450px;
+            bottom: 320px;
+         }
+         .decima-9{
+            position: absolute;
+            right:405px ;
+            bottom: 340px;
+         }
+         .vigesima-{
+            position: absolute;
+            right: 350px;
+            bottom: 360px;
+         }
+         .vigesima-1{
+            position: absolute;
+            right: 320px;
+            bottom: 340px;
+         }
+         .vigesima-2{
+            position: absolute;
+            right: 310px;
+            bottom: 320px;
+         }
+         .vigesima-3{
+            position: absolute;
+            right: 320px;
+            bottom: 300px;
+         }
+         .vigesima-4{
+            position: absolute;
+            right: 290px;
+            bottom: 280px;
+         }
+         .vigesima-5{
+            position: absolute;
+            right: 290px;
+            bottom: 260px;
+         }
+         .vigesima-6{
+            position: absolute;
+            right: 285px;
+            bottom: 240px;
+         }
+         .vigesima-7{
+            position: absolute;
+            right: 275px;
+            bottom: 220px;
+         }
+      p {
+         color: rgb(255, 0, 0);
+         box-shadow: -10px 15px 100px #f20044;
+         animation: latiendo 0.6s linear infinite, drop 0.5s forwards; /* Añadido efecto de latido */
+         opacity: 0; /* Comienza invisible */
+         transform: translateY(-20px); /* Comienza un poco más arriba */
+         font-weight: 100%;
+         font-size: 25px;
+         max-width: 100%;    
+        
+         
+      }
+
+      /* Animaciones */
+      @keyframes latiendo {
+         0% { transform: scale(1); }
+         50% { transform: scale(1.2); } /* Aumenta el tamaño */
+         100% { transform: scale(1); } /* Regresa al tamaño original */
+      }
+
+      @keyframes drop {
+         to {
+            opacity: 1; /* Se vuelve visible */
+            transform: translateY(0); /* Regresa a su posición original */
+         }
+      }
+
+      /* Aplica un retraso a cada párrafo */
+      .container p {
+         animation-delay: 1s; /* Inicializa el retraso */
+         
+      }
+
+      /* Ajuste de retraso para cada párrafo */
+      .container p:nth-child(1) { animation-delay: 27.5s; }
+      .container p:nth-child(2) { animation-delay: 1s; }
+      .container p:nth-child(3) { animation-delay: 1.5s; }
+      .container p:nth-child(4) { animation-delay: 2s; }
+      .container p:nth-child(5) { animation-delay: 2.5s; }
+      .container p:nth-child(6) { animation-delay: 3s; }
+      .container p:nth-child(7) { animation-delay: 3.5s; }
+      .container p:nth-child(8) { animation-delay: 4s; }
+      .container p:nth-child(9) { animation-delay: 4.5s; }
+      .container p:nth-child(10) { animation-delay: 5s; }
+      .container p:nth-child(11) { animation-delay: 5.5s;}
+      
+      .container p:nth-child(12) { animation-delay: 6s; }
+      .container p:nth-child(13) { animation-delay: 6.5s; }
+      .container p:nth-child(14) { animation-delay: 7s; }
+      .container p:nth-child(15) { animation-delay: 7.5s; }
+      .container p:nth-child(16) { animation-delay: 8s; }
+      .container p:nth-child(17) { animation-delay: 8.5s; }
+      .container p:nth-child(18) { animation-delay: 9s; }
+      .container p:nth-child(19) { animation-delay: 9.5s; }
+      .container p:nth-child(20) { animation-delay: 10s; }
+      .container p:nth-child(21) { animation-delay: 10.5s; }
+      .container p:nth-child(22) { animation-delay: 11s; }
+      .container p:nth-child(23) { animation-delay: 11.5s; }
+      .container p:nth-child(24) { animation-delay: 12s; }
+      .container p:nth-child(25) { animation-delay: 12.5s; }
+      .container p:nth-child(26) { animation-delay: 26.1s; }
+      .container p:nth-child(27) { animation-delay: 13.5s; } 
+      .container p:nth-child(28) { animation-delay: 14s; }
+      .container p:nth-child(29) { animation-delay: 14.5s; }
+      .container p:nth-child(30) { animation-delay: 15s; }
+      .container p:nth-child(31) { animation-delay: 15.5s;}
+      .container p:nth-child(32) { animation-delay: 16s; }
+      .container p:nth-child(33) { animation-delay: 16.5s; }
+      .container p:nth-child(34) { animation-delay: 17s; }
+      .container p:nth-child(35) { animation-delay: 17.5s; }
+      .container p:nth-child(36) { animation-delay: 18s; }
+      .container p:nth-child(37) { animation-delay: 18.5s; }
+      .container p:nth-child(38) { animation-delay: 19s; }
+      .container p:nth-child(39) { animation-delay: 19.5s; }
+      .container p:nth-child(40) { animation-delay: 20s; }
+      .container p:nth-child(41) { animation-delay: 20.5s; }
+      .container p:nth-child(42) { animation-delay: 21s; }
+      .container p:nth-child(43) { animation-delay: 21.5s; }
+      .container p:nth-child(44) { animation-delay: 22s; }
+      .container p:nth-child(45) { animation-delay: 22.5s; }
+      .container p:nth-child(46) { animation-delay: 23s; }
+      .container p:nth-child(47) { animation-delay: 23.5s; }
+      .container p:nth-child(48) { animation-delay: 24s; }
+      .container p:nth-child(49) { animation-delay: 24.5s; }
+      .container p:nth-child(50) { animation-delay: 25s; }
+      .container p:nth-child(51) { animation-delay: 25.5s;}
+      .container p:nth-child(52) { animation-delay: 26s;}
+      
+      /* Puedes repetir esto hasta el número total de párrafos que tengas */
+      #miGif {
+    display: none; /* Ocultamos el GIF inicialmente */
+    position: absolute; /* Posicionamos el GIF de forma absoluta */
+    top: 0;
+    left: 0;
+    width: 90%; /* Ocupa todo el ancho del contenedor */
+    height: 100%; /* Ocupa toda la altura del contenedor */
+    z-index: 9998; /* Asegura que esté por encima de otros elementos */
+    
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+#ily {
+    display: none; /* Ocultamos el GIF inicialmente */
+    position: absolute; /* Posicionamos el GIF de forma absoluta */
+    width: 500px; /* Ancho del GIF */
+    height: auto; /* Mantiene la proporción */
+    z-index: 9999; /* Asegura que esté por encima de otros elementos */
+    top: 50%; /* Posiciona el GIF en el centro vertical */
+    left: 45%; /* Posiciona el GIF en el centro horizontal */
+    transform: translate(-50%, -50%); /* Ajusta la posición para centrar */
+}
+   </style>
+</head>
+<body>
+
+   <img id="miGif" src="cora.gif" alt="Mi GIF" />
+   <img id="ily" src="ily.gif" alt=" ily">
+   
+   <div class="container">
+      
+
+      <p class="amor"><strong>Camila Aless</strong></p>
+      <p class="primera">¡Feliz</p>
+      <p class="segunda">2 años</p>
+      <p class="tercera">juntos!</p>
+      <p class="cuarta">Estoy</p>
+      <p class="quinta">agradecido</p>
+      <p class="sexta">por cada</p>
+      <p class="septima">momento</p>
+      <p class="octava">que hemos</p>
+      <p class="novena">compartido.</p>
+      <p class="decima">Tu amor</p>
+      <p class="decima1">y apoyo</p>
+      <p class="decima2">significan</p>
+      <p class="decima3">el mundo</p>
+      <p class="decima5">para mi.</p>
+      <p class="decima6">Cada</p>
+      <p class="decima7">instante</p>
+      <p class="decima8">a tu</p>
+      <p class="decima9">lado es</p>
+      <p class="vigesima">un tesoro</p>
+      <p class="vigesima1">te amo mas</p>
+      <p class="vigesima2">de lo que</p>
+      <p class="vigesima3">las palabras</p>
+      <p class="vigesima4">puedan</p>
+      <p class="vigesima5">expresar</p>
+      <p class="vigesima6">AMO!</p>
+      
+
+      <p class="primera-">Deseo que</p>
+      <p class="segunda-">sigamos</p>
+      <p class="tercera-">creciendo</p>
+      <p class="cuarta-">juntos,</p>
+      <p class="quinta-">creando</p>
+      <p class="sexta-">recuerdos</p>
+      <p class="septima-">inolvidables</p>
+      <p class="octava-">y</p>
+      <p class="novena-">disfrutando</p>
+      <p class="decima-">de cada</p>
+      <p class="decima-1">dia.</p>
+      <p class="decima-4">floreciendo</p>
+      <p class="decima-5">en cada</p>
+      <p class="decima-6">abrazo</p>
+      <p class="decima-7">y en</p>
+      <p class="decima-8">cada</p>
+      <p class="decima-9">mirada.</p>
+      <p class="vigesima-">Gracias</p>
+      <p class="vigesima-1">por ser</p>
+      <p class="vigesima-2">mi luz</p>
+      <p class="vigesima-3">y</p>
+      <p class="vigesima-4">mi refugio.</p>
+      <p class="vigesima-5">te digo</p>
+      <p class="vigesima-6">que</p>
+      <p class="vigesima-7">!TE</p>
+   </div>
+
+   <script>
+      // Función para hacer aparecer los GIFs después de un tiempo
+      setTimeout(() => {
+            const miGif = document.getElementById('miGif');
+            const ily = document.getElementById('ily');
+
+            miGif.style.display = 'flex'; // Muestra el primer GIF
+            setTimeout(() => {
+                ily.style.display = 'block'; // Muestra el segundo GIF después de un tiempo
+            }, 1000); // Espera 2 segundos antes de mostrar el segundo GIF
+        }, 30000); // Espera 3 segundos antes de mostrar el primer GIF
+
+      // Función para hacer que el texto desaparezca
+      setTimeout(() => {
+            const texto = document.getElementById('container');
+            texto.style.opacity = '0'; // Cambia la opacidad a 0
+        }, 5500); // Tiempo en milisegundos (3000ms = 3s)
+   </script>
+</body>
+</html>

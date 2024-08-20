@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Feliz 2 años</title>
+    <link rel="stylesheet" href="./tarjetamov.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="dinoicon.png"> <!-- Cambia la ruta a tu imagen -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Centra horizontalmente */
+            height: 180vh; /* Altura completa de la ventana */
+            margin: 0;
+        }
+
+        .barra-container {
+            width: 100%;
+            max-width: 400px; /* Ancho máximo de la barra */
+            margin-bottom: 5px; /* Espacio entre la barra y el botón */
+            position: relative; /* Para posicionar el número en el centro */
+        }
+
+        #barra {
+            width: 100%;
+            background-color: #d3c2d4;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        #progreso {
+            height: 30px;
+            width: 0;
+            background-color: #e63fd8;
+            transition: width 1s;
+        }
+
+        .numero {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centra el número */
+            font-weight: bold;
+            color: rgb(0, 0, 0); /* Color del texto */
+        }
+
+        button {
+            margin-top: 20px;
+            position: relative; /* Para posicionar los corazones dentro del botón */
+            padding: 10px 20px; /* Espaciado del botón */
+            font-size: 16px; /* Tamaño de fuente */
+            background-color: #ff007f; /* Color del botón */
+            color: rgb(255, 255, 255); /* Color del texto del botón */
+            border: none; /* Sin borde */
+            border-radius: 10px; /* Bordes redondeados */
+            cursor: pointer; /* Cambiar cursor al pasar por encima */
+        }
+
+        button:hover {
+            background-color: #2834dd; /* Color del botón al pasar el ratón */
+        }
+
+        .corazon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transform: rotate(0deg);
+            opacity: 1;
+            animation: volar 2s forwards;
+        }
+
+        .corazon::before,
+        .corazon::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .corazon::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .corazon::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes volar {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="imgBox">
+            <div class="bark"></div>
+            <img src="dino.png">
+        </div>
+        <div class="details">
+            <h4 class="color1">FELIIIZ 2 AÑOSSSS!!!♥♥♥</h4>
+            <h4 class="color2 margin">demi para ti</h4>
+            <p>Con mucho Amor y mucho</p>
+            <p>pero mucho amor</p>
+            <p>C ♥ ♥ ♥ L</p>
+            <p>Agradecido por estar</p>
+            <p>a mi lado, recordando</p>
+            <p>aquellos momentos que </p>
+            <p>compartimos.</p>
+            <p>Te envio muchos besitos muack muack♥ :</p>
+            <p class="text-right">Te llevo en mi corazon</p>
+            <p class="text-right">hoy y siempre!!♥</p>
+        </div>
+    </div>
+
+    <div class="barra-container">
+        <div id="barra">
+            <div id="progreso"></div>
+            <div class="numero" id="numero">0%</div>
+        </div>
+    </div>
+
+    <button onclick="incrementarCarga()">!Llena de amor!!!! ❤️❤️❤️</button>
+
+    <script>
+        let ancho = 0;
+
+        function incrementarCarga() {
+            const progreso = document.getElementById('progreso');
+            const numero = document.getElementById('numero');
+            if (ancho < 100) {
+                ancho += 3; // Incrementa el ancho en 10%
+                progreso.style.width = ancho + '%';
+                numero.textContent = ancho + '%'; // Actualiza el número
+
+                crearCorazon();
+
+                // Redirigir cuando la barra esté llena
+                if (ancho >= 100) {
+                 setTimeout(() => {
+                  window.location.href = 'cargabarra.html'; // Cambia a la página deseada
+                  }, 500); // Espera medio segundo antes de redirigir
+}
+            }
+        }
+
+        function crearCorazon() {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon';
+            document.body.appendChild(corazon);
+
+            // Posicionar el corazón en el centro del botón
+            const button = document.querySelector('button');
+            const rect = button.getBoundingClientRect();
+            corazon.style.left = `${rect.left + rect.width / 2 - 10}px`; // Centrado
+            corazon.style.top = `${rect.top + rect.height / 2 - 10}px`; // Centrado
+
+            // Añadir un pequeño desplazamiento hacia arriba y hacia los lados
+            const offsetX = (Math.random() - 0.5) * 50; // Desplazamiento aleatorio en X
+            const offsetY = (Math.random() - 1) * 50; // Desplazamiento en Y (hacia arriba)
+            corazon.style.transform = `translate(${offsetX}px, ${offsetY}px)`; // Aplicar el desplazamiento
+
+            // Remover el corazón después de la animación
+            corazon.addEventListener('animationend', () => {
+                corazon.remove();
+            });
+        }
+    </script>
+</body>
+</html>

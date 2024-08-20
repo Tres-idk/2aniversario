@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta 2 años!!</title>
+    <link rel="icon" type="image/png" href="iconcarta.png"> <!-- Cambia la ruta a tu imagen -->
+   
+    <style>
+        :root {
+            --primary: #fff;
+            --bg-color: rgb(5, 53, 61);
+            --bg-envelope-color: #f5edd1;
+            --envelope-tab: #ecdeb8;
+            --envelope-cover: #e6cfa7;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --txt-color: #444;
+            --heart-color: rgb(252, 8, 231);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: -100%;
+        }
+        .envelope-wrapper {
+            background: var(--bg-envelope-color);
+            box-shadow: 0 0 40px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-bottom: 20px;
+            transform: scale(1.1); /* Aumenta el tamaño del contenedor */
+        }
+        .envelope {
+            position: relative;
+            width: 400px; /* Ajusta el tamaño del sobre si es necesario */
+            height: 300px; /* Ajusta el tamaño del sobre si es necesario */
+        }
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            border-top: 170px solid var(--envelope-tab);
+            border-right: 200px solid transparent;
+            border-left: 200px solid transparent;
+            transform-origin: top;
+            transition: all 0.5s ease-in-out 0.7s;
+        }
+        .envelope::after {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            width: 0px;
+            height: 0px;
+            border-top: 170px solid transparent;
+            border-right: 200px solid var(--envelope-cover);
+            border-bottom: 130px solid var(--envelope-cover);
+            border-left: 200px solid var(--envelope-cover);
+        }
+        .letter {
+            position: absolute;
+            right: 20%;
+            bottom: 0;
+            width: 55%;
+            height: 80%;
+            background: var(--primary);
+            text-align: justify;
+            transition: all 1s ease-in-out;
+            box-shadow: 0 0 5px var(--shadow-color);
+            padding: 30px 15px;
+        }
+        .letter .text {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: var(--txt-color);
+            text-align: center;
+            font-size: 12px;
+            padding: -30px 0px;
+        }
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            background: var(--heart-color);
+            z-index: 4;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: transform 0.5s ease-in-out 1s;
+            box-shadow: 0 1px 6px var(--shadow-color);
+            cursor: pointer;
+        }
+        .heart:before, 
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--heart-color);
+            border-radius: 50%;
+        }
+        .heart:before {
+            top: -12.5px;
+        }
+        .heart:after {
+            right: 12.5px;
+        }
+        .flap > .envelope:before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+        .flap > .envelope > .letter {
+            bottom: 200px;
+            transform: scale(1.5);
+            transition-delay: 1s;
+        }
+        .flap > .heart {
+            transform: rotate(90deg);
+            transition-delay: 0.4s;
+        }
+        .button {
+            display: none;
+            padding: 15px 30px;
+            background-color: var(--heart-color);
+            color: var(--primary);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .show {
+            display: block;
+        }
+        #myButton {
+            width: 100px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Dear Person.</strong>
+                        <p>
+                           Desde el momento en que te conocí, supe que había encontrado a alguien especial.
+                           Eres mi confidente, mi apoyo y la razón por la que creo en el amor verdadero. Cada pequeño gesto tuyo, desde una mirada hasta un abrazo, me recuerda lo afortunado que soy de tenerte en mi vida.
+                           Mi corazón solo late con felicidad cuando estoy contigo.
+                           Espero que siempre podamos seguir creando recuerdos juntos, explorando el mundo y creciendo como pareja. Gracias por ser tú, por ser tan increíble y por <br>hacerme sentir <br>amado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+        <button class="button" id="myButton" onclick="location.href='https://www.youtube.com/watch?v=Ni0bXuKvvT8';">Hola</button>
+        
+    </div>
+            
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        const button = document.getElementById('myButton');
+        let clickCount = 0;
+
+        envelope.addEventListener('click', () => {
+            clickCount++;
+            envelope.classList.toggle('flap');
+
+            if (clickCount === 2) {
+                button.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>
